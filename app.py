@@ -36,13 +36,10 @@ def get_similars(filename: str, howmany: int = 4):
 @app.route("/", methods = ['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
